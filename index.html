@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAFW | East Africa Flood Watch System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <!-- <img src="/api/placeholder/40/40" alt="Logo"> -->
+            <div>
+                <span>EAST AFRICA</span>
+                <span class="logo-text">FLOOD WATCH</span>
+            </div>
+        </div>
+        <nav class="nav-items">
+            <a href="#" class="nav-link">HOME</a>
+            <a href="#" class="nav-link active">MAPVIEWER</a>
+            <a href="#" class="nav-link">REPORTS</a>
+            <a href="#" class="nav-link">ANALYSIS</a>
+            <a href="#" class="nav-link">FLOOD INDICATORS</a>
+            <a href="#" class="nav-link">ABOUT</a>
+            <a href="#" class="nav-link">PARTNERS</a>
+            <a href="#" class="nav-link">CONTACT US</a>
+            <button class="search-button">
+                <span class="search-icon">🔍</span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="sidebar-tabs">
+                <button class="tab-button active" onclick="showTab('layers')">Layers</button>
+                <button class="tab-button" onclick="showTab('alerts')">Alerts</button>
+            </div>
+
+            <div id="layers" class="tab-content">
+                <div class="layer-group">
+                    <div class="layer-header">Base Maps</div>
+                    <div class="layer-item">
+                        <input type="radio" name="baseMap" checked> OpenStreetMap
+                    </div>
+                    <div class="layer-item">
+                        <input type="radio" name="baseMap"> Satellite
+                    </div>
+                    <div class="layer-item">
+                        <input type="radio" name="baseMap"> Terrain
+                    </div>
+                </div>
+
+                <div class="layer-group">
+                    <div class="layer-header">Flood Layers</div>
+                    <div class="layer-item">
+                        <input type="checkbox"> Current Flood Extent
+                    </div>
+                    <div class="layer-item">
+                        <input type="checkbox"> Flood Forecast (24h)
+                    </div>
+                    <div class="layer-item">
+                        <input type="checkbox"> Flood Forecast (48h)
+                    </div>
+                    <div class="layer-item">
+                        <input type="checkbox"> Historical Floods
+                    </div>
+                </div>
+
+                <div class="layer-group">
+                    <div class="layer-header">Additional Data</div>
+                    <div class="layer-item">
+                        <input type="checkbox"> Rainfall
+                    </div>
+                    <div class="layer-item">
+                        <input type="checkbox"> River Networks
+                    </div>
+                    <div class="layer-item">
+                        <input type="checkbox"> Population Density
+                    </div>
+                </div>
+            </div>
+
+            <div id="alerts" class="tab-content" style="display: none;">
+                <div class="flood-alert">
+                    <strong>Severe Flood Warning</strong><br>
+                    Lake Victoria Basin<br>
+                    Expected duration: 24-48 hours
+                </div>
+                <div class="flood-alert">
+                    <strong>Moderate Flood Risk</strong><br>
+                    Upper Nile Region<br>
+                    Expected duration: 72 hours
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <div id="map"></div>
+            <div class="analysis-panel">
+                <button class="tool-button" onclick="startDrawing()">Draw Area</button>
+                <button class="tool-button" onclick="analyzeDrawnArea()">Analyze Area</button>
+                <div class="upload-area">
+                    Drop files here or click to upload custom data
+                </div>
+            </div>
+            <div class="map-controls">
+                <div class="control-button">+</div>
+                <div class="control-button">-</div>
+                <div class="control-button">⌖</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
